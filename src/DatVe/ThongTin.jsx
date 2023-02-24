@@ -24,20 +24,32 @@ class ThongTin extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            {/* <tr>
-                                <th>vc</th>
-                                <th>vc</th>
-                                <th>vc</th>
-                            </tr> */}
                             {this.props.gheDangDat.map((gheDangDat, index) => {
                                 return <tr key={index}>
                                     <td>{gheDangDat.soGhe}</td>
-                                    <td>{gheDangDat.gia}</td>
+                                    <td>{gheDangDat.gia.toLocaleString()}</td>
+                                    <td><button onClick={() => {
+                                        let action = {
+                                            type: "HUY_GHE",
+                                            soGhe: gheDangDat.soGhe
+                                        }
+                                        this.props.dispatch(action)
 
+                                    }}>Cancel</button></td>
                                 </tr>
                             })}
 
                         </tbody>
+                        <tfoot>
+                            <tr className="text-warning">
+                                <td></td>
+                                <td>Tổng tiền</td>
+                                <td>{this.props.gheDangDat.reduce(
+                                    (tongTien, gheDangDat, index) => {
+                                        return tongTien += gheDangDat.gia;
+                                    }, 0)}</td>
+                            </tr>
+                        </tfoot>
                     </table>
 
                 </div>

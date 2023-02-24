@@ -28,14 +28,14 @@ class ThongTin extends Component {
                                 return <tr key={index}>
                                     <td>{gheDangDat.soGhe}</td>
                                     <td>{gheDangDat.gia.toLocaleString()}</td>
-                                    <td><button onClick={() => {
+                                    <td><span className='text-white' style={{ cursor: 'pointer', padding:"10px 15px", backgroundColor:'#ff9f5f', borderRadius:'12px' }} onClick={() => {
                                         let action = {
                                             type: "HUY_GHE",
                                             soGhe: gheDangDat.soGhe
                                         }
                                         this.props.dispatch(action)
 
-                                    }}>Cancel</button></td>
+                                    }}>Cancel</span></td>
                                 </tr>
                             })}
 
@@ -43,7 +43,7 @@ class ThongTin extends Component {
                         <tfoot>
                             <tr className="text-warning">
                                 <td></td>
-                                <td>Tổng tiền</td>
+                                <td><b>TOTAL</b></td>
                                 <td>{this.props.gheDangDat.reduce(
                                     (tongTien, gheDangDat, index) => {
                                         return tongTien += gheDangDat.gia;
